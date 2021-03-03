@@ -1,0 +1,17 @@
+Server:
+  RunMode: debug
+  HttpPort: 8080
+  ReadTimeout: 60
+  WriteTimeout: 60
+App:
+  DefaultPageSize: 10
+  LogSavePath: storage/logs
+  LogFileName: app
+  LogFileExt: .log
+Database:
+  DBType: mysql
+  UserName: root
+  Password: root
+  Host: 127.0.0.1:3306
+  DBName: spider
+  Charset: utf8

@@ -2,7 +2,7 @@ package v1
 
 import (
 	"log"
-	"resource-pub/internal/routers/service"
+	"resource-pub/internal/service"
 	"resource-pub/pkg/app"
 
 	"github.com/gin-gonic/gin"
@@ -22,5 +22,11 @@ func (r Resource) Lists(c *gin.Context) {
 	if err != nil {
 		log.Fatalf("params err:%v", err)
 	}
-	
+	res := service.Resource{
+		ID: 1,
+		ResourceID: "T544",
+		Title: "test",
+	}
+	// pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
+	response.ToResponseList(res, 1)
 }

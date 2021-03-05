@@ -35,3 +35,8 @@ func (r *Response) ToResponseList(list interface{}, totalRows int) {
 		},
 	})
 }
+
+func (r *Response) ToErrorResponse(msg string) {
+	response := gin.H{"code": 001, "msg": msg}
+	r.Ctx.JSON(500, response)
+}

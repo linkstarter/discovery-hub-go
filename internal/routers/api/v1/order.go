@@ -1,9 +1,10 @@
 package v1
 
 import (
+	"log"
 	"resource-pub/internal/service"
 	"resource-pub/pkg/app"
-	"log"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,5 +24,8 @@ func (o Order) Lists(c *gin.Context) {
 	svc := service.New(c.Request.Context())
 	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	orders, total, err := svc.GetOrderList(&params, &pager)
+	if err != nil {
+		response.ToErrorResponse("错误")
+	}
 	response.ToResponseList(orders, total)
 }
